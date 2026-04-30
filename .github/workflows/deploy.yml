@@ -29,8 +29,8 @@ jobs:
           git config --global user.email "github-actions@github.com"
 
       - name: Deploy
-        run: cd build && npm run deploy
+        run: npm run deploy
         env:
-          GIT_USER: LogiksReactPlugins
+          GIT_USER: OpenLogiks
           USE_SSH: false
           GIT_PASS: ${{ secrets.GITHUB_TOKEN }}

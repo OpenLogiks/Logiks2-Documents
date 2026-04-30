@@ -19,10 +19,10 @@ const config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  url: "https://logiksreactplugins.github.io",
+  url: "https://openlogiks.github.io",
   baseUrl: "/Logiks2-Documents/",
 
-  organizationName: "LogiksReactPlugins",
+  organizationName: "OpenLogiks",
   projectName: "Logiks2-Documents",
   trailingSlash: true,
 
