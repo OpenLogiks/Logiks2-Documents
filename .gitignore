@@ -40,6 +40,5 @@ coverage/
 
 # optional lock files (keep ONE package manager only)
 # remove comments depending on what you use
-package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
