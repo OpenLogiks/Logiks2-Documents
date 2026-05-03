@@ -36,6 +36,21 @@ const config = {
     locales: ["en"],
   },
 
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: "/",
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+      },
+    ],
+  ],
   presets: [
     [
       "classic",
@@ -67,15 +82,15 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: "Logiks Documentation",
+        title: "Home",
         logo: {
-          alt: "Logiks Documentation",
+          alt: "Home",
           src: "img/logo.svg",
         },
         items: [
           {
             type: "docSidebar",
-            label: "Documentation",
+            label: "Docs",
             sidebarId: "tutorialSidebar",
             position: "left",
           },
@@ -91,20 +106,66 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Documentation",
+            title: "Docs",
             items: [
               {
-                label: "Getting Started",
+                label: "Documentation",
+                to: "/intro",
+              },
+              {
+                label: "API Reference",
                 to: "/intro",
               },
             ],
           },
           {
-            title: "Repositories",
+            title: "Repos",
             items: [
               {
-                label: "Logiks Reports",
+                label: "Reports",
                 href: "https://github.com/LogiksReactPlugins/LogiksReports",
+              },
+              {
+                label: "Forms",
+                href: "https://github.com/LogiksReactPlugins/LogiksForms",
+              },
+              {
+                label: "Infoviews",
+                href: "https://github.com/LogiksReactPlugins/LogiksInfoview",
+              },
+              {
+                label: "Navigation",
+                href: "https://github.com/LogiksReactPlugins/navigator",
+              },
+              {
+                label: "Dashboards",
+                href: "https://github.com/LogiksReactPlugins/LogiksDashboard",
+              },
+              {
+                label: "Charts",
+                href: "https://github.com/LogiksReactPlugins/LogiksCharts",
+              },
+            ],
+          },
+          {
+            title: "Development",
+            items: [
+              {
+                label: "Report a Bug",
+                href: "https://github.com/LogiksReactPlugins/LogiksReports",
+              },
+              {
+                label: "Report Security Issue",
+                href: "https://github.com/LogiksReactPlugins/LogiksReports",
+              },
+            ],
+          },
+          {
+            title: "Community",
+            items: [
+              {
+                label: "Github",
+                href: "https://github.com/LogiksReactPlugins",
               },
             ],
           },
