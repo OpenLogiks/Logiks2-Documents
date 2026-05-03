@@ -18,6 +18,28 @@ These are used to trigger events like:
 - Navigate (Change Page, Open forms, Open Popups, etc.)
 - API Calls
 
+### JSON
+
+```json
+"actions": {
+  "api@vendor.on_hold": { "label": "Hold" },
+  "api@vendor.park_files": { "label": "Park" },
+  "api@vendor.markAsArchiveForCompetedFiles": { "label": "Archive" }
+}
+```
+
+![Actions Example](/img/reports/Report-actions.png)
+
+### UI Mapping
+
+- Top center/right area
+- Marked as **“Actions”**
+- Buttons:
+  - Hold
+  - Park
+  - Archive
+  - Print / Export (system-level)
+
 ---
 
 ## 1. Actions (Global Actions)
@@ -99,9 +121,20 @@ Example:
   "forms@edit": {
     "label": "Edit",
     "icon": "fa fa-pen"
+  },
+    "forms@log": {
+    "label": "Logs",
+    "icon": "fa fa-clock-rotate-left"
+  },
+    "forms@delete": {
+    "label": "Delete",
+    "icon": "fa fa-trash",
+    "lgksConfirm": "Are you sure you want to delete the {company_spv} record?"
   }
 }
 ```
+
+![Buttons Example](/img/reports/Report-buttons.png)
 
 ---
 

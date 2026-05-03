@@ -1,5 +1,5 @@
 ---
-id: mg-forms-intro
+id: intro
 title: Forms
 ---
 

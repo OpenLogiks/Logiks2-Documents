@@ -4,13 +4,16 @@ REMOVE unwanted Emojies
 Main topic in ## and subtopics in ###
 
 1. What is allows to
-1.1 if it triggers anything
+   1.1 if it triggers anything
 2. Example
 3. Explain properties
-3.1. How it works
+   3.1. How it works
 4. When to use
 
-
+Reports
+common - get it reviewed with SC
+formmatters - get it reviewed with SC and add more examples
+What will debug true will do if source is not SQL
 
 datagrid
 What are different types of filter for selects- Pramod
@@ -20,211 +23,144 @@ Does it supports array of string
 
 To how many report templates the rules applies to? Does it apply to all templates or specific ones?
 
-custom formatter.
+custom formatter. example
 
+reports screenshots
 
+---
 
-source - 
-action & button
-toolbar
-datagrid
-slot-binding
-rules
-cards
-kanban
-calendar
-gallery
-gantt
-gmap
+# showExtraColumn → **Checkbox Column (Marked: “showExtraColumn”)**
 
+### JSON
 
-{
-  "title": "Persona",
-  "rowlink": false,
-  "rowsPerPage": 10,
-  "settings":false,
-  "template": "",
-  "custombar": false,
-  "showExtraColumn": "checkbox",
-  "source": {
-    "type": "API",  
-    "method": "get",
-    "url": `APIURL`, 
-    "headers": {
-         "appid": "app01",
-         "Authorization": "Bearer 1111", 
-         "Content-Type": "application/json", 
-    },
-    "limit": 10
-  },
-  "actions": {
-    "forms@new": {
-      "label": "Persona",
-      "icon": "fa fa-plus mr-1",
-    }
-  },
-  "buttons": {
-    "infoview@test": {
-      "label": "View Info",
-      "icon": "fa fa-eye"
-    },
-    "forms@edit": {
-      "label": "Edit Info",
-      "icon": "fa-solid fa-pen-to-square"
-    },
-    "page@skills": {
-      "label": "Add",
-      "icon": "fa fa-gear pull-lef"
-    }
-  },
-  "toolbar": {
-    "search": true,
-    "print": true,
-    "email": false,
-    'export':[]
-  },
-  "datagrid": {
-    "id": {
-      "label": "ID",
-      "hidden": false,
-      "searchable": true,
-      "sortable": true,
-      "groupable": false,
-      "classes": "",
-      "style": "width:50px;",
-    },
-    "persona_code": {
-      "label": "persona code",
-      "sortable": true,
-      "searchable": true,     
-    },
-    "status": {
-      "label": "status",
-      "searchable": false,
-      "filter": {
-        "type": "select",
-        "options": {
-          "male": "published",
-          "female": "Female"
-        }
-      }
-    },
-    "persona_group": {
-      "label": "persona group",
-      "hidden": false,
-      "searchable": true,
-      "groupable": true,
+```json
+"showExtraColumn": "checkbox"
+```
 
-    },
-    "persona_avatar": {
-      "label": "persona avatar",
-      "hidden": true,
-      "searchable": false
-    },
-    "rating": {
-      "label": "rating",
-      "hidden": true,
-      "searchable": false
-    },
-    "created_on": {
-      "label": "created on",
-      "formatter":"date",
-      "hidden": true,
-      "searchable": false
-    },
-    "persona_descs": {
-      "label": "persona descs"
-    }
-  },
-  "cards": {
-    "colmap": {
-      "title": "persona_name",
-      "descs": "persona_descs",
-      "category": "type",
-      "due_date": "created_on",
-      "avatar": "persona_avatar",
-      "color": "status",
-    },
-    "colormap": {
-      "active": "card_green",
-      "under_notice": "card_red",
-      "probationary": "card_blue"
-    },
-    "unilink": "staff.main",
-    "default_avatar": true
-  },
-  "kanban": {
-    "colkeys": {
-      "persona_group": {
-        "label": "persona group",
-      },"created_by": {
-        "label": "created by",
-      },"editable": {
-        "label": "editable",
-      },"status": {
-        "label": "status",
-      },"visibility": {
-        "label": "visibility",
-      }
-    },
-    "colmap": {
-      "title": "persona_name",
-      "department": "created_by",
-      "descs": "persona_descs",
-      "category": "gender",
-      "due_date": "dtoe",
-      "avatar": "persona_avatar",
-      "color": "type",
-      "tags": "role",
-      "counter": "rating"
-    },
-  },
+### UI Mapping
 
-  "calendar": {
-    "colmap": {
-      "title": "persona_name",
-      "descs": "persona_desc"
-    },
-    
-    "date_col": {
-      "created_on": "#9428C8",
-      "edited_on": "#3653C6"
-    },
-    "unilink": "staff.main",
-    "notes_user": "<div class='text-center' style='color:white;'><span style='background:#333;padding:5px;'>created on</span><span style='background:orange;padding:5px;'>edited on</span></div>"
-  },
-  "gallery":{
-		"colmap":{
-		    "avatar": "persona_avatar",
-			"title":"persona_name",
-			"descs":"persona_desc",
-			"due_date":"persona_code"
-		},
-	},
-    "gantt":{
-    "colmap": {
-        "id": "id",
-        "name": "persona_name",
-        "start": "created_on",
-        "end": "end_date",
-        "progress": "completion",
-        "owner": "assigned_to",
-        "milestone": "is_milestone",
-        "parent": "parent_id",
-        "dependencies": "depends_on"
-      }
-  },
-   "gmap": {
-    "zoom": 4,
-    "mapid": "terrain",
-    "colmap": {
-      "title": "name",
-      "descs": "info",
-      "geolocation": "geo",
-    },
-    "template": `<div>
-        <h2>$title</h2>
-        <p>$descs</p>
-      </div>`,
+- First column in table
+- Marked as **“showExtraColumn”**
+- Enables:
+  - Row selection
+  - Bulk actions
+
+---
+
+# uiswitcher → **View Switch Icon (Marked: “Report switcher”)**
+
+### JSON
+
+```json
+"uiswitcher": true
+```
+
+### UI Mapping
+
+- Top-right of table controls
+- Marked as **“Report switcher”**
+- Icon with list/grid toggle
+
+---
+
+# Settings / Inline Controls (Framework Driven)
+
+### JSON Source
+
+(Not directly from your JSON, but enabled via toolbar/uiswitcher)
+
+### UI Mapping
+
+- Marked as:
+  - **“Settings” (gear icon)**
+  - **“Inline Filters” (filter icon)**
+
+- Located next to:
+  - Report switcher
+
+---
+
+# Buttons → **Row Click (Subject Column)**
+
+### JSON
+
+```json
+"buttons": {
+  "page@eoffice.chat": {
+    "label": "{file_code}"
   }
 }
+```
+
+### UI Mapping
+
+- Inside table rows
+- Subject column is clickable
+- Opens:
+  - Chat / detail page
+
+---
+
+# rowsPerPage → **Pagination**
+
+### JSON
+
+```json
+"rowsPerPage": 20
+```
+
+### UI Mapping
+
+- Text:
+  - “Showing 1 to 20 of 23 records”
+
+- Controls page size
+
+---
+
+# datagrid → **Main Table**
+
+### JSON
+
+```json
+"datagrid": {}
+```
+
+### UI Mapping
+
+- Entire table section:
+  - Columns (Subject, Seen At, Action, etc.)
+  - Sorting arrows
+  - Data rows
+
+---
+
+# source → **Data Layer**
+
+### JSON
+
+```json
+"source": {}
+```
+
+### UI Mapping
+
+- Not visible directly
+- Feeds data into:
+  - Table
+  - Filters
+  - Counts
+
+---
+
+# Final Note
+
+This version aligns exactly with your screenshot:
+
+- Uses your **marked labels**
+- Avoids generic visuals
+- Keeps documentation **precise and mappable**
+
+---
+
+If you want next step, I can convert this into a **standard documentation template** so every report JSON you write automatically follows this same mapping format.

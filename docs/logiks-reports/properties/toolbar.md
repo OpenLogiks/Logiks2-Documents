@@ -29,7 +29,7 @@ Example:
 }
 ```
 
----
+## ![Toolbar](/img/reports/Report-toolbar.png)
 
 ## Available Options
 
