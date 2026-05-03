@@ -42,7 +42,7 @@ Logiks Reports provide a wide range of features and capabilities that make it an
 - Support filters on date and date range.
 - Supports wide range of export options (CSV, Excel, PDF, etc.)
 - Support for custom formatters to customize the display of data in the report.
-- Support for slot binding to allow users to bind custom components to specific slots in the report. Refers to [slot-binding](/module-guide/pages/pages-intro#slot-binding) for more details.
+- Support for slot binding to allow users to bind custom components to specific slots in the report. Refers to [slot-binding](/module-guide/pages/mg-pages-intro#supporting-slot-binding) for more details.
 - Supports custom formatter in a separate file with same name as report but with `.js` extension. For example, if your report is `sales-report.json`, you can create a custom formatter in `sales-report.js` and it will be automatically used by the report.
 
-Refers to the [link](/logiks-reports/getting-started) for more details on Reports
+Refers to the [link](/logiks-reports/getting-started/) for more details on Reports
