@@ -5,178 +5,304 @@ title: Formatter References
 
 # Formatters
 
-Formatters control how data is displayed and **core formatter engine**
+Formatters control how data is displayed in reports and UI components.  
+All formatters are processed through the core formatter engine.
+
+---
 
 ## Supported Formatters
 
 ### checkbox
 
+Renders boolean values as checkbox input.
+
+---
+
 ### date
 
-Formats date values. Accepts standard date formats or timestamps.
+Formats date values.  
+**Example:** `2024-01-15 → 15/01/2024`
+
+---
 
 ### month
 
-Formats month values. Accepts month names, numbers, or timestamps.
+Formats month index or value to month name.  
+**Example:** `3 → March`
+
+---
 
 ### time
 
-Formats time values. Accepts standard time formats or timestamps.
+Extracts and formats time from datetime.  
+**Example:** `2024-01-15T14:30:00 → 14:30:00`
+
+---
 
 ### datetime
 
-Formats date and time values. Accepts standard datetime formats or timestamps.
+Formats full datetime.  
+**Example:** `2024-01-15T14:30:00 → 15/01/2024, 14:30:00`
+
+---
 
 ### currency
 
-Formats numeric values as currency. Accepts a currency code (e.g., "USD") or symbol (e.g., "$").
+Formats number as currency.  
+**Example:** `1234.5 → $1,234.50`
 
-### number
+---
 
-Formats numeric values with optional decimal places and thousand separators.
+### number / num
 
-### num
+Formats numeric values with separators.  
+**Example:** `1234567 → 1,234,567`
 
-Formats numeric values with optional decimal places and thousand separators, without currency symbols.
+---
 
-### link
+### link / url
 
-Enables clickable links. Accepts URLs, absolute paths, or relative paths. On relative paths, it will navigate within the app.
+Renders clickable link.  
+**Example:**  
+`https://example.com → <a>LINK</a>`
 
-### url
-
-Formats values as URLs. Similar to "link" but specifically for web addresses.
+---
 
 ### email
 
-Formats values as email addresses, making them clickable to open the default mail client.
+Creates mailto link.  
+**Example:**  
+`test@example.com → <a href="mailto:...">`
 
-### tel
+---
 
-Formats values as telephone numbers, making them clickable to initiate a call on supported devices.
+### phone / tel / mobile / mob
 
-### mob
+Creates clickable phone link.  
+**Example:**  
+`9876543210 → <a href="tel:...">`
 
-Formats values as mobile phone numbers, making them clickable to initiate a call on supported devices.
+---
 
-### phone
+### geolocation / geoloc / geoaddress
 
-Formats values as phone numbers, making them clickable to initiate a call on supported devices.
+Creates map link for location.  
+**Example:**  
+`New York → Opens in map`
 
-### mobile
-
-Formats values as mobile phone numbers, making them clickable to initiate a call on supported devices.
-
-### geoloc
-
-Formats values as geolocation coordinates, making them clickable to open in a map application.
-
-### geolocation
-
-Formats values as geolocation coordinates, making them clickable to open in a map application.
-
-### geoaddress
-
-Formats values as geolocation addresses, making them clickable to open in a map application.
+---
 
 ### color
 
-Formats values as colors. Accepts color names, hex codes, or RGB values.
+Displays color preview (circle/block).  
+**Example:**  
+`#ff0000 → Red indicator`
+
+---
 
 ### avatar
 
-Formats values as avatars. Accepts image URLs or user identifiers to fetch profile images.
+Displays rounded user image.  
+**Example:**  
+`image URL → avatar`
 
-### photo
+---
 
-Formats values as photos. Accepts image URLs to display as photos.
+### photo / picture
 
-### picture
+Displays image preview.
 
-Formats values as pictures. Accepts image URLs to display as pictures.
+---
 
-### media
+### media / mediafile / file
 
-Formats values as media files. Accepts URLs to audio or video files.
+Displays file/media link.  
+**Example:**  
+`file URL → <a>FILE</a>`
 
-### file
-
-Formats values as files. Accepts URLs to downloadable files.
+---
 
 ### attachment
 
-Formats values as attachments. Accepts URLs to downloadable files.
+Handles multiple files.  
+**Example:**  
+`file1.pdf,file2.png → multiple links + preview`
+
+---
 
 ### json
 
-Formats values as JSON strings, making them easier to read.
+Formats JSON into readable structure.
+
+---
 
 ### pretty
 
-Formats values as pretty-printed JSON or html for better readability.
+Formats text for readability.  
+**Example:**  
+`hello_world → Hello World`
+
+---
 
 ### uppercase
 
-Formats text values to uppercase.
+Converts text to uppercase.
+
+---
 
 ### lowercase
 
-Formats text values to lowercase.
+Converts text to lowercase.
+
+---
 
 ### html
 
-Formats values as HTML, allowing for rich content display.
+Renders HTML content.
 
-### mediafile
-
-Formats values as media files. Accepts URLs to audio or video files.
+---
 
 ### method
 
-Formats values by calling a specified method. Accepts the method name as a string. Used for custom formatting logic defined in the report's methods. The method are defined in the report file which has same name as report but with .js extension. The method will receive the cell value and the entire row data as parameters, allowing for complex formatting based on the context.
+Custom formatter using function.
+
+```js
+columnInfo: {
+  method: (v) => `Custom: ${v}`;
+}
+```
+
+---
 
 ### embed
 
-Formats values as embedded content. Accepts URLs to embeddable content such as videos, maps, or social media posts.
+Renders embeddable content link.
 
-### video
+---
 
-Formats values as videos. Accepts URLs to video files or embeddable video links.
+### video / videoembed
 
-### videoembed
+Handles video content and triggers playback.
 
-Formats values as embedded videos. Accepts URLs to embeddable video links.
+---
 
 ### iframe
 
-Formats values as iframes. Accepts URLs to be embedded within an iframe.
+Embeds content inside iframe container.
+
+---
 
 ### content
 
-Formats values as content. Accepts raw content to be rendered directly.
+Handles long content with abstract + popup view.
+
+---
 
 ### template
 
-Formats values as templates. Accepts a template name to be rendered.
+Renders template using record data.
+
+```json
+"template": "Name: %name%, Age: %age%"
+```
+
+---
 
 ### edge
 
-Formats values as edges in a graph. Accepts configuration for source, target, and label.
+Formats time difference (relative time).
+**Example:**
+`1 hour ago`
 
-## Example
+---
 
-```json
-"formatter": "currency"
+## Default Behaviors
+
+### Array
+
+```js
+["a", "b", "c"] → "a, b, c"
 ```
 
-## When to use
+### Long Text
 
-- currency → financial data
-- avatar → user profile
-- html → rich content
+```js
+Long string → <pre>formatted text</pre>
+```
 
-## Formatter Behavior
+### Short Text
 
-- All formatters are processed via `formatCellValue`
-- Applied at rendering stage
-- Works for both table and cards
+```js
+Displayed as-is
+```
+
+---
+
+## Example Usage
+
+```json
+{
+  "formatter": "currency"
+}
+```
+
+---
+
+## Notes
+
+- Formatters are applied during rendering
+- Works across tables, cards, and views
+- Custom logic can be implemented using `method`
+- Formatter behavior may vary based on UI context
+
+---
+
+## Formatter Mapping (Debug Reference)
+
+| Formatter          | Input                       | Output                                                   |
+| ------------------ | --------------------------- | -------------------------------------------------------- |
+| checkbox           | `true`                      | `<input type='checkbox' checked />`                      |
+| date               | `2024-01-15`                | `15/01/2024`                                             |
+| month              | `3`                         | `March`                                                  |
+| time               | `2024-01-15T14:30:00`       | `14:30:00`                                               |
+| datetime           | `2024-01-15T14:30:00`       | `15/01/2024, 14:30:00`                                   |
+| currency           | `1234.5`                    | `$1,234.50`                                              |
+| number             | `1234567`                   | `1,234,567`                                              |
+| link               | `https://example.com`       | `<a href='...'>LINK</a>`                                 |
+| email              | `test@example.com`          | `<a href='mailto:test@example.com'>test@example.com</a>` |
+| phone              | `9876543210`                | `<a href='tel:9876543210'>9876543210</a>`                |
+| geolocation        | `New York, USA`             | `Google Maps link`                                       |
+| color              | `#ff0000`                   | `Red color indicator`                                    |
+| avatar             | `https://img.com/user.png`  | `<img rounded avatar>`                                   |
+| photo              | `https://img.com/photo.png` | `<img preview>`                                          |
+| attachment         | `file1.pdf,file2.png`       | `Multiple links with preview`                            |
+| json               | `{"name":"John"}`           | `Formatted JSON`                                         |
+| pretty             | `hello_world`               | `Hello World`                                            |
+| uppercase          | `hello`                     | `HELLO`                                                  |
+| lowercase          | `HELLO`                     | `hello`                                                  |
+| html               | `<b>Bold</b>`               | `Rendered HTML`                                          |
+| mediafile          | `https://file.com/doc.pdf`  | `<a>FILE</a>`                                            |
+| method             | `value`                     | `Custom: value`                                          |
+| embed              | `https://embed.com`         | `OPEN clickable`                                         |
+| video              | `https://youtube.com/video` | `OPEN video trigger`                                     |
+| iframe             | `https://example.com`       | `Embedded iframe`                                        |
+| content            | `Long text`                 | `Abstract + popup`                                       |
+| template           | `{name: John}`              | `Name: John, Age: 25`                                    |
+| edge               | timestamp                   | `1 hr ago`                                               |
+| default-array      | `["a","b","c"]`             | `a, b, c`                                                |
+| default-long-text  | long string                 | `<pre>formatted text</pre>`                              |
+| default-short-text | `Short text`                | `Short text`                                             |
+
+---
+
+## Notes for Debugging
+
+- Use this table to validate formatter output quickly
+- If output mismatch occurs:
+  - Check formatter name
+  - Verify input format
+  - Confirm column configuration (`columnInfo`, `template`, etc.)
+
+- Custom formatter (`method`) depends on implementation
+
+---
