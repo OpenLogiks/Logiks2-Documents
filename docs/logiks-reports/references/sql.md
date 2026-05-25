@@ -83,3 +83,21 @@ Example:
         "limit": 1000
     }
 ```
+
+Example: This is used in form field to populate the drop down, this is another example of sql reference
+
+```json
+"to_check": {
+    "label": "Scope Rules/Permission (Policies)",
+    "group": "Admin",
+    "type": "dataSelectorFromTable",
+    "table": "lgks_rolemodel",
+    "columns": "CONCAT ('policy:', policystr) as value, policystr as title",
+    "where": {
+        "blocked": "false",
+        "policystr IS NOT NULL": "RAW"
+    },
+    "groupby": "policystr",
+    "multiple": true
+},
+```

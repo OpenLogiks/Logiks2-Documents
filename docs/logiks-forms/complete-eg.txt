@@ -1,46 +1,34 @@
----
-id: intro
-title: Forms
----
 
-# Forms
+Below example covers
+Saving data in table `table_1` with a
+Supporting ajax chaining, which means a selection in one drop down will populate another drop down and so on.
+Example Country -> State -> City
+Ajax chain's src can be api or sql.
 
-## What is Logiks Forms?
+source: defines the location of data where to save on add form submit and on edit form the `#refid#` will be replaced with the id of the record being edited.
 
-Logiks Forms is a **JSON-driven dynamic form engine** in LRC that enables building fully functional forms without writing UI code.
+forcefill: not part of form fields, but it will be used to inject hidden fields into the submission.
+fields
+key: should be same a the column name of the table
+label: defines the label of the field
+type: defines the type of the field
+parameter: Supports string or objects, The parameter will always be used along with ajaxchain.
+"parameter": {
+"sector_id": "sector_id",
+"company_id": "company_code_id"
+},
 
-It supports:
+    required: defines if the field is required or not
+    source: supports 3 types  sql, api, method,
+        SQL has the reference
+        API has the reference
+        Method has the reference
+    ajaxchain:
+            target: define which field to populate
+            source: define the source of the field
+    no-option: shows default value in the drop down, this is valid only when type has value `select`
 
-- Dynamic rendering
-- API/SQL integrations
-- Field dependencies
-- Validation & persistence
-- Workflow hooks
-
----
-
-## Key Capabilities
-
-- Declarative JSON Properties
-- Dynamic data binding
-- Multi-source data (API / SQL / static)
-- Rich field types
-- Event hooks (pre/post submit)
-- Auto-fill via session and context
-
----
-
-## When to Use
-
-Use Logiks Forms when:
-
-- You want configurable forms without frontend coding
-- You need dynamic data-driven inputs
-- You want reusable form definitions across modules
-
----
-
-## Complete Example
+    width: defines the width of the field, supported value 1-12
 
 ```json
 {
@@ -56,6 +44,7 @@ Use Logiks Forms when:
     "guid": "#SESS_GUID#"
   },
   "gotolink": "infoview/hse.incident/{hashid}",
+  "template": "simple", 
   "fields": {
     "company_code_id": {
       "label": "Company/ SPV",
