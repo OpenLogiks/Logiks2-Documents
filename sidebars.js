@@ -93,35 +93,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Logiks Forms Agents",
-      items: [
-        "logiks-forms-agent/getting-started",
-
-        {
-          type: "category",
-          label: "Properties",
-          collapsed: false,
-          items: [
-            "logiks-forms-agent/properties/forms-common-props",
-            "logiks-forms-agent/properties/form-field-props",
-            "logiks-forms-agent/properties/autocomplete-config-props",
-          ],
-        },
-        {
-          type: "category",
-          label: "References",
-          items: [
-            "logiks-forms-agent/references/hooks",
-            "logiks-forms-agent/references/field-types-overview",
-            "logiks-forms-agent/references/internal-components",
-            "logiks-forms-agent/references/utility-functions",
-            "logiks-forms-agent/references/view-modes",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Logiks Forms",
       items: [
         "logiks-forms/intro",
