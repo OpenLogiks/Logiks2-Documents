@@ -49,6 +49,7 @@ Supports:
 ### source
 
 Used to fetch existing data (edit mode).
+Defines the source of data where to save on add form submit and on edit form the `#refid#` will be replaced with the id of the record being edited.
 
 ```json id="source-example"
 "source": {

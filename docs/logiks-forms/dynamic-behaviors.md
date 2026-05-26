@@ -94,13 +94,61 @@ Same goes for `sector_id` and `project_id`.
 
 ## Autocomplete Mapping
 
-```json id="autocomplete-map"
-"autocomplete": {
-  "src": {
-    "endpoint": "/user/details"
-  },
-  "target": "email,phone,name"
+This is an example of how autocomplete can be mapped to another field, where parent values changes the autocomplete code will get trigger. Here the sql query will be executed whenerver `profile_id` changes.
+The `src` in the `autocomplete` object can have object which may refer to sql or api.
+So the 2 possible objects for `src` are
+
+Example 1 where sql is used
+
+```json
+"src":{
+  "table": "profiletbl",
+  "columns": "profiletbl.organization as org_id",
+  "where": {
+      "profiletbl.id": "#refid#"
+  }
 }
+```
+
+Example 2 where api is used
+
+```json
+"src":{
+  "type": "api",
+  "endpoint": "/api/services/eofficeGlobal/get_organization"
+  "parameter": { "company_id": "company_code_id" },
+}
+```
+
+Parameter can be string or object. If string, which will be the `key` value form the `fields` object, then the parameter will be passed as `key`:`value` implicitly. If object, then the object will be passed as `custom_key`:`field's key` explicitly. The object is used when multiple parameters are required.
+
+```json id="autocomplete-map"
+"profile_id": {
+			"label": "Contact Info",
+			"group": "Info",
+			"type": "dataSelectorFromTable",
+			"table": "profiletbl",
+			"columns": "full_name as title,id as value",
+			"where":{
+			  "(type !='employee')":"RAW",
+			  "blocked":"false",
+			  "length(full_name)>0":"RAW"
+			},
+			"orderBy":"full_name asc",
+			"no-option": "Select Dealer",
+			"required": true,
+			"seacrh": true,
+			"autocomplete":{
+				"target":"org_id",
+				"src":{
+					"table": "profiletbl",
+					"columns": "profiletbl.organization as org_id",
+					"where": {
+					   	"profiletbl.id": "#refid#"
+					}
+				}
+			}
+		},
 ```
 
 ---

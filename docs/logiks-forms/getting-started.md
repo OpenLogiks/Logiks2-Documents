@@ -5,7 +5,6 @@ title: Getting Started
 
 # Getting Started
 
-
 ## Minimal Form Example
 
 ```json id="basic-form"
@@ -30,5 +29,6 @@ title: Getting Started
 3. Add `fields`
 4. Add optional `forcefill`
 5. Configure `gotolink`
+6. Add `buttons` - optional to perform actions
 
 ---

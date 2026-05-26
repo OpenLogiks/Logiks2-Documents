@@ -294,7 +294,10 @@ Example if user.json defines the following then the function `countPerson` will 
 }
 ```
 
-- `radioList`
+### `radioList`
+
+This is same as radio
+Refer to [radio](/logiks-forms/field-types/#radio)
 
 ### `dataSelector`
 
@@ -384,6 +387,9 @@ Complex Example with ajaxchain
 ```
 
 ### `dataSelectorFromUnique`
+
+This is same as dataSelectorFromTable
+Refer to [dataSelectorFromTable](/logiks-forms/field-types/#dataselectorfromtable)
 
 ## Advanced Fields
 
