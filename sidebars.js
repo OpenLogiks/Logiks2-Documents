@@ -112,7 +112,7 @@ const sidebars = {
     {
       type: "category",
       label: "Logiks InfoView",
-      items: ["module-guide/dashboards/mg-dashboards-intro"],
+      items: ["logiks-infoview/intro", "logiks-infoview/getting-started", "logiks-infoview/examples","logiks-infoview/properties","logiks-infoview/infoview-groups"],
     },
     {
       type: "category",
